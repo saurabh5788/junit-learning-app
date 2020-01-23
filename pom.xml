@@ -12,6 +12,7 @@
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.12</version>
+			<scope>test</scope>
 		</dependency>
 		<!--<dependency>
 			<groupId>junit</groupId>
@@ -37,7 +38,7 @@
 						</property>
 					</properties>					
 					<includes>
-						<include>com.learning.junit4.test.TestSuite.java</include>
+						<include>**/Test*Suite.java</include>
 					</includes>
 				</configuration>
 			</plugin>
