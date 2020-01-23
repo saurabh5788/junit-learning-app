@@ -11,6 +11,8 @@ public class TestCommonListener extends RunListener {
 	 * */
 	public void testRunStarted(Description description)
 			throws java.lang.Exception {
+		System.out
+				.println("===================================================");
 		System.out.println("TestCommonListener : Number of tests to execute : "
 				+ description.testCount());
 	}
@@ -21,14 +23,19 @@ public class TestCommonListener extends RunListener {
 	public void testRunFinished(Result result) throws java.lang.Exception {
 		System.out
 				.println("Number of tests executed : " + result.getRunCount());
+		System.out
+				.println("===================================================");
 	}
 
 	/**
 	 * Called when an atomic test is about to be started.
 	 * */
 	public void testStarted(Description description) throws java.lang.Exception {
-		System.out.println("TestCommonListener : Starting execution of test case : "
-				+ description.getMethodName());
+		System.out
+				.println("---------------------------------------------------");
+		System.out
+				.println("TestCommonListener : Starting execution of test case : "
+						+ description.getMethodName());
 	}
 
 	/**
@@ -37,16 +44,22 @@ public class TestCommonListener extends RunListener {
 	 * */
 	public void testFinished(Description description)
 			throws java.lang.Exception {
-		System.out.println("TestCommonListener : Finished execution of test case : "
-				+ description.getMethodName());
+		System.out
+				.println("TestCommonListener : Finished execution of test case : "
+						+ description.getMethodName());
+		System.out
+				.println("---------------------------------------------------");
 	}
 
 	/**
 	 * Called when an atomic test fails.
 	 * */
 	public void testFailure(Failure failure) throws java.lang.Exception {
-		System.out.println("TestCommonListener : Execution of test case failed : "
-				+ failure.getMessage());
+		System.out
+				.println("****************************************************");
+		System.out
+				.println("TestCommonListener : Execution of test case failed : "
+						+ failure.getMessage());
 	}
 
 	/**
@@ -54,7 +67,10 @@ public class TestCommonListener extends RunListener {
 	 * annotated with Ignore.
 	 * */
 	public void testIgnored(Description description) throws java.lang.Exception {
-		System.out.println("TestCommonListener : Execution of test case ignored : "
-				+ description.getMethodName());
+		System.out
+				.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+		System.out
+				.println("TestCommonListener : Execution of test case ignored : "
+						+ description.getMethodName());
 	}
 }

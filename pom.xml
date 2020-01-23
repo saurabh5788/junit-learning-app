@@ -31,7 +31,7 @@
 					<properties>
 						<property>
 							<name>listener</name>
-							<value>com.learning.junit4.test.TestAccountUtilsListener,com.learning.junit4.test.TestCommonListener</value>
+							<value>com.learning.junit4.test.TestCommonListener</value>
 						</property>
 					</properties>
 					<includes>
