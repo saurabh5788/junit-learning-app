@@ -14,16 +14,13 @@
 			<version>4.12</version>
 			<scope>test</scope>
 		</dependency>
-		<!--<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit-dep</artifactId>
-			<version>4.12</version>
-			<scope>test</scope>
-		</dependency>-->
+		<!--<dependency> <groupId>junit</groupId> <artifactId>junit-dep</artifactId> 
+			<version>4.12</version> <scope>test</scope> </dependency> -->
 	</dependencies>
 
 	<build>
 		<plugins>
+			<!-- Explicit Surefire Plugin configuration -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
@@ -34,19 +31,24 @@
 					<properties>
 						<property>
 							<name>listener</name>
-							<value>com.learning.junit4.test.TestAccountBusinessListener,com.learning.junit4.test.TestCommonListener</value>
+							<value>com.learning.junit4.test.TestAccountUtilsListener,com.learning.junit4.test.TestCommonListener</value>
 						</property>
-					</properties>					
+					</properties>
 					<includes>
-						<include>**/Test*Suite.java</include>
+						<include>**/Test*Suite.java</include>						
 					</includes>
+					<!-- <excludes>
+						<exclude>**/Test*Suite.java</exclude>
+					</excludes>-->
 				</configuration>
 			</plugin>
+			<!-- To Generate Site HTMLs -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-site-plugin</artifactId>
 				<version>3.8.2</version>
 			</plugin>
+			<!-- For Code Coverage -->
 			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>

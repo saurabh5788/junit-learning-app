@@ -9,6 +9,6 @@ import org.junit.runners.Suite.SuiteClasses;
  }*/
 
 @RunWith(Suite.class)
-@SuiteClasses({ TestAccountBusiness.class, TestAccount.class })
+@SuiteClasses({ TestAccountUtils.class, TestAccountDTO.class })
 public class TestAccountSuite {
 }

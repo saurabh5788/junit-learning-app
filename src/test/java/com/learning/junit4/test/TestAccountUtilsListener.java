@@ -5,7 +5,7 @@ import org.junit.runner.Result;
 import org.junit.runner.notification.Failure;
 import org.junit.runner.notification.RunListener;
 
-public class TestAccountBusinessListener extends RunListener {
+public class TestAccountUtilsListener extends RunListener {
 	/**
 	 * Called before any tests have been run.
 	 * */
