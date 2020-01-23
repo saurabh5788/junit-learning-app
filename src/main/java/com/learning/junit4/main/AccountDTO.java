@@ -1,6 +1,6 @@
 package com.learning.junit4.main;
 
-public class Account {
+public class AccountDTO {
 	private String accountNumber;
 	private String customerId;
 	private Double balance;
@@ -48,7 +48,12 @@ public class Account {
 	 *            the balance to set
 	 */
 	public void setBalance(Double balance) {
-		this.balance = balance;
+		if(balance != null){
+			this.balance = balance;
+		}
+		else{
+			this.balance = new Double(0D);
+		}
 	}
 
 	/**
@@ -63,6 +68,8 @@ public class Account {
 	 *            the typeCode to set
 	 */
 	public void setTypeCode(Character typeCode) {
+		if(typeCode == null)
+			throw new NullPointerException("Passed Type Code can not be null!!!");
 		this.typeCode = typeCode;
 	}
 

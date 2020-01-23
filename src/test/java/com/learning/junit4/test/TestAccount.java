@@ -9,17 +9,14 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
-import com.learning.junit4.main.AccountBusinessLogic;
 import com.learning.junit4.main.AccountDTO;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class TestAccountBusiness {
-	private static AccountBusinessLogic abl;
+public class TestAccount {
 	private static AccountDTO account;
 
 	@BeforeClass
 	public static void initTestAccountBusiness() {
-		abl = new AccountBusinessLogic();
 		account = new AccountDTO();
 	}
 
@@ -33,24 +30,26 @@ public class TestAccountBusiness {
 		System.out.println("This is exceuted after each Test");
 	}
 
-	@Test
-	public void typeCodeTestCase() {
-		System.out.println("Testing typeCodeTestCase");
-		account.setTypeCode('s');
-		assertEquals("Savings", abl.getAccountType(account));
-		System.out.println("Tested typeCodeTestCase");
+	@Test(expected = NullPointerException.class)
+	public void typeCodeWithNullTestCase() {
+		System.out.println("Testing typeCodeTestCaseWithNull");
+		account.setTypeCode(null);
+		System.out.println("Tested typeCodeTestCaseWithNull");
 	}
 
 	@Test
-	public void siTestCase() {
-		System.out.println("Testing siTestCase");
-		Double p = 1000D;
-		Double r = 8D;
-		Double t = 10D;
+	public void typeCodeWithValidValueTestCase() {
+		System.out.println("Testing typeCodeTestCaseWithValidValue");
+		account.setTypeCode('s');
+		assertEquals(new Character('s'), account.getTypeCode());
+		System.out.println("Tested typeCodeTestCaseWithValidValue");
+	}
 
-		Double si = AccountBusinessLogic.getSimpleInterest(p, r, t);
-		assertEquals(si, new Double(800D));
-		System.out.println("Tested siTestCase");
+	@Test
+	public void balanceWithNullTestCase() {
+		System.out.println("Testing balanceTestCase");
+		account.setBalance(null);
+		assertEquals(new Double(0D), account.getBalance());
+		System.out.println("Tested balanceTestCase");
 	}
 }
-

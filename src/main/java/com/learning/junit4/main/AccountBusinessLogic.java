@@ -16,7 +16,7 @@ public class AccountBusinessLogic {
 		accountTypeMap.put('l', "Loan");
 	}
 
-	public String getAccountType(Account account) {
+	public String getAccountType(AccountDTO account) {
 		return accountTypeMap.get(account.getTypeCode());
 	}
 
