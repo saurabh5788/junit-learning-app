@@ -1,41 +1,11 @@
 package com.learning.junit4.main;
 
 public class AccountDTO {
-	private String accountNumber;
-	private String customerId;
+
 	private Double balance;
 	private Character typeCode;
 
-	/**
-	 * @return the accountNumber
-	 */
-	public String getAccountNumber() {
-		return accountNumber;
-	}
-
-	/**
-	 * @param accountNumber
-	 *            the accountNumber to set
-	 */
-	public void setAccountNumber(String accountNumber) {
-		this.accountNumber = accountNumber;
-	}
-
-	/**
-	 * @return the customerId
-	 */
-	public String getCustomerId() {
-		return customerId;
-	}
-
-	/**
-	 * @param customerId
-	 *            the customerId to set
-	 */
-	public void setCustomerId(String customerId) {
-		this.customerId = customerId;
-	}
-
+	
 	/**
 	 * @return the balance
 	 */
@@ -52,7 +22,7 @@ public class AccountDTO {
 			this.balance = balance;
 		}
 		else{
-			this.balance = new Double(0D);
+			this.balance = 0.0;
 		}
 	}
 
