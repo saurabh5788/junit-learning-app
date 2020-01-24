@@ -17,7 +17,7 @@ public class TestAccountUtils {
 		account = new AccountDTO();
 	}
 
-	@Test(timeout = 10)
+	@Test(timeout = 1)
 	public void siTestCase() {
 		System.out.println("Testing siTestCase");
 		Double p = 1000D;

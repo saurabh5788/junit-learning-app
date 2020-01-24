@@ -13,8 +13,9 @@ public class TestCommonListener extends RunListener {
 			throws java.lang.Exception {
 		System.out
 				.println("===================================================");
-		System.out.println("TestCommonListener : Number of tests to execute : "
-				+ description.testCount());
+		System.out
+				.println("TestCommonListener : Total Number of tests to execute : "
+						+ description.testCount());
 	}
 
 	/**
@@ -22,7 +23,14 @@ public class TestCommonListener extends RunListener {
 	 * */
 	public void testRunFinished(Result result) throws java.lang.Exception {
 		System.out
-				.println("Number of tests executed : " + result.getRunCount());
+				.println("TestCommonListener : Total Number of tests executed : "
+						+ result.getRunCount());
+		System.out
+				.println("TestCommonListener : Total Number of tests failed : "
+						+ result.getFailureCount());
+		System.out
+				.println("TestCommonListener : Total Number of tests ignored : "
+						+ result.getIgnoreCount());
 		System.out
 				.println("===================================================");
 	}
