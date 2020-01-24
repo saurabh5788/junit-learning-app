@@ -4,20 +4,26 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import com.learning.junit4.main.AccountDTO;
 import com.learning.junit4.main.AccountUtils;
 
+@RunWith(MockitoJUnitRunner.class)
 public class TestAccountUtils {
 
-	private static AccountDTO account;
+	@Mock
+	private AccountDTO account;
 
 	@BeforeClass
-	public static void initTestAccountBusiness() {
-		account = new AccountDTO();
+	public static void initTestAccountUtils() {
+		System.out.println("Init TestAccountUtils.");
 	}
 
-	@Test(timeout = 1)
+	@Test(timeout = 10)
 	public void siTestCase() {
 		System.out.println("Testing siTestCase");
 		Double p = 1000D;
@@ -32,9 +38,18 @@ public class TestAccountUtils {
 	@Test(timeout = 1000)
 	public void typeCodeTestCase() {
 		System.out.println("Testing typeCodeTestCase");
-		account.setTypeCode('s');
-		assertEquals("Savings", AccountUtils.getAccountType(account));
 		assertEquals("Savings", AccountUtils.getAccountType('s'));
 		System.out.println("Tested typeCodeTestCase");
 	}
+
+	@Test(timeout = 1000)
+	public void typeCodeTestCaseUsingMock() {
+		System.out.println("Testing typeCodeTestCaseUsingMock");
+		Mockito.when(account.getTypeCode()).thenReturn('c');
+		assertEquals("Current", AccountUtils.getAccountType(account));
+		Mockito.verify(account).getTypeCode();
+		System.out.println("Tested typeCodeTestCaseUsingMock");
+	}
 }
+
+
