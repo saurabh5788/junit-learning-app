@@ -8,7 +8,9 @@
 	<description>Basic JUnit Learning Application</description>
 
 	<properties>
-		<jacoco.limit.percentage>0.40</jacoco.limit.percentage>
+		<jacoco.limit.percentage>0.90</jacoco.limit.percentage>
+		<compiler.source.version>1.8</compiler.source.version>
+		<compiler.target.version>1.8</compiler.target.version>
 	</properties>
 
 	<dependencies>
@@ -29,17 +31,29 @@
 	</dependencies>
 
 	<build>
+		<finalName>junit-learning</finalName>
 		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.6.1</version>
+				<configuration>
+					<source>${compiler.source.version}</source>
+					<target>${compiler.target.version}</target>
+				</configuration>
+			</plugin>
 			<!-- Explicit Surefire Plugin configuration -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>2.22.0</version>
 				<configuration>
+					<!-- default ${basedir}/target/surefire-reports -->
+					<reportsDirectory>${basedir}/target/surefire-reports</reportsDirectory>
 					<testFailureIgnore>true</testFailureIgnore>
 					<!-- <skipTests>true</skipTests> -->
-					<!-- <parallel>methods</parallel> -->
-					<threadCount>2</threadCount>
+					<parallel>methods</parallel>
+					<threadCount>10</threadCount>
 					<properties>
 						<property>
 							<name>listener</name>
@@ -52,11 +66,24 @@
 					<!-- <excludes> <exclude>**/Test*Suite.java</exclude> </excludes> -->
 				</configuration>
 			</plugin>
-			<!-- To Generate Site HTMLs -->
+			<!-- To Generate Site Project Info HTMLs -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-site-plugin</artifactId>
 				<version>3.8.2</version>
+				<executions>
+					<execution>
+						<id>site</id>
+						<phase>install</phase>
+						<goals>
+							<goal>site</goal>							
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<!-- default target/site/* -->
+					<outputDirectory>${basedir}/target/project-info-report</outputDirectory>								
+				</configuration>
 			</plugin>
 			<!-- For Code Coverage -->
 			<plugin>
@@ -76,6 +103,10 @@
 						<goals>
 							<goal>report</goal>
 						</goals>
+						<!-- default target/jscoco/site/* -->
+						<configuration>
+							<outputDirectory>target/jacoco-code-coverage-report</outputDirectory>
+						</configuration>
 					</execution>
 					<execution>
 						<id>jacoco-check</id>
@@ -85,26 +116,18 @@
 						</goals>
 						<configuration>
 							<rules>
-								<rule implementation="org.jacoco.maven.RuleConfiguration">
-									<element>BUNDLE</element>
+								<rule>
+									<element>CLASS</element>
 									<limits>
 										<limit>
 											<counter>LINE</counter>
 											<value>COVEREDRATIO</value>
 											<minimum>${jacoco.limit.percentage}</minimum>
 										</limit>
-										<limit>
-											<counter>BRANCH</counter>
-											<value>COVEREDRATIO</value>
-											<minimum>${jacoco.limit.percentage}</minimum>
-										</limit>
 									</limits>
 								</rule>
 								<rule>
-									<element>CLASS</element>
-									<excludes>
-										<exclude>com.asimio.demo.Application</exclude>
-									</excludes>
+									<element>PACKAGE</element>
 									<limits>
 										<limit>
 											<counter>LINE</counter>

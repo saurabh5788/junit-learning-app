@@ -43,25 +43,33 @@ public class TestAccountDTO {
 
 	@Test(expected = NullPointerException.class)
 	public void typeCodeWithNullTestCase() {
-		System.out.println("Testing typeCodeTestCaseWithNull");
+		System.out.println("Testing typeCodeWithNullTestCase");
 		account.setTypeCode(null);
-		System.out.println("Tested typeCodeTestCaseWithNull");
+		System.out.println("Tested typeCodeWithNullTestCase");
 	}
 
-	@Test
+	@Test	
 	public void typeCodeWithValidValueTestCase() {
-		System.out.println("Testing typeCodeTestCaseWithValidValue");
+		System.out.println("Testing typeCodeWithValidValueTestCase");
 		account.setTypeCode('s');
 		assertEquals(new Character('s'), account.getTypeCode());
-		System.out.println("Tested typeCodeTestCaseWithValidValue");
+		System.out.println("Tested typeCodeWithValidValueTestCase");
 	}
 
-	@Test
-	@Ignore
+	@Test	
 	public void balanceWithNullTestCase() {
-		System.out.println("Testing balanceTestCase");
+		System.out.println("Testing balanceWithNullTestCase");
 		account.setBalance(null);
 		assertEquals(new Double(0D), account.getBalance());
-		System.out.println("Tested balanceTestCase");
+		System.out.println("Tested balanceWithNullTestCase");
+	}
+	
+	@Test
+	@Ignore
+	public void balanceWithValidValueTestCase() {
+		System.out.println("Testing balanceWithValidValueTestCase");
+		account.setBalance(101D);
+		assertEquals(new Double(101), account.getBalance());
+		System.out.println("Tested balanceWithValidValueTestCase");
 	}
 }

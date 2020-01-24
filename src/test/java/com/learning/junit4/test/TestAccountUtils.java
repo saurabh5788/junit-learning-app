@@ -24,15 +24,15 @@ public class TestAccountUtils {
 	}
 
 	@Test(timeout = 10)
-	public void siTestCase() {
-		System.out.println("Testing siTestCase");
+	public void siWithValuesTestCase() {
+		System.out.println("Testing siWithValuesTestCase");
 		Double p = 1000D;
 		Double r = 8D;
 		Double t = 10D;
 
 		Double si = AccountUtils.getSimpleInterest(p, r, t);
-		assertEquals(si, new Double(800D));
-		System.out.println("Tested siTestCase");
+		assertEquals(new Double(800), si);
+		System.out.println("Tested siWithValuesTestCase");
 	}
 
 	@Test(timeout = 1000)
@@ -43,13 +43,22 @@ public class TestAccountUtils {
 	}
 
 	@Test(timeout = 1000)
-	public void typeCodeTestCaseUsingMock() {
-		System.out.println("Testing typeCodeTestCaseUsingMock");
+	public void typeCodeUsingMockTestCase() {
+		System.out.println("Testing typeCodeUsingMockTestCase");
 		Mockito.when(account.getTypeCode()).thenReturn('c');
 		assertEquals("Current", AccountUtils.getAccountType(account));
 		Mockito.verify(account).getTypeCode();
-		System.out.println("Tested typeCodeTestCaseUsingMock");
+		System.out.println("Tested typeCodeUsingMockTestCase");
+	}
+
+	@Test
+	public void siWithAccountTestCase() {
+		System.out.println("Testing siWithAccountTestCase");
+		Mockito.when(account.getTypeCode()).thenReturn('l');
+		Mockito.when(account.getBalance()).thenReturn(1000.0);
+		Double t = 10D;
+		Double si = AccountUtils.getSimpleInterest(account, t);
+		assertEquals(new Double(-1000), si);
+		System.out.println("Tested siWithAccountTestCase");
 	}
 }
-
-

@@ -5,7 +5,6 @@ public class AccountDTO {
 	private Double balance;
 	private Character typeCode;
 
-	
 	/**
 	 * @return the balance
 	 */
@@ -18,10 +17,9 @@ public class AccountDTO {
 	 *            the balance to set
 	 */
 	public void setBalance(Double balance) {
-		if(balance != null){
+		if (balance != null) {
 			this.balance = balance;
-		}
-		else{
+		} else {
 			this.balance = 0.0;
 		}
 	}
@@ -38,8 +36,9 @@ public class AccountDTO {
 	 *            the typeCode to set
 	 */
 	public void setTypeCode(Character typeCode) {
-		if(typeCode == null)
-			throw new NullPointerException("Passed Type Code can not be null!!!");
+		if (typeCode == null)
+			throw new NullPointerException(
+					"Passed Type Code can not be null!!!");
 		this.typeCode = typeCode;
 	}
 
